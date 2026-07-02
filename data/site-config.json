@@ -1,0 +1,32 @@
+{
+  "siteName": "Anarv Singh | Software Engineer | Backend Engineer",
+  "theme": "light",
+  "loaderInitials": [
+    "A",
+    "S"
+  ],
+  "metaDescription": "Anarv Singh — Software Engineer | Backend Engineer. Portfolio showcasing professional experience, skills, and projects.",
+  "metaKeywords": "Anarv Singh, Software Engineer | Backend Engineer, Portfolio",
+  "progressCheckpoints": [
+    {
+      "id": "hero",
+      "label": "Home"
+    },
+    {
+      "id": "about",
+      "label": "About"
+    },
+    {
+      "id": "experience",
+      "label": "Journey"
+    },
+    {
+      "id": "skills",
+      "label": "Skills"
+    },
+    {
+      "id": "contact",
+      "label": "Contact"
+    }
+  ]
+}

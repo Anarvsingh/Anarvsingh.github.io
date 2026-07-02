@@ -1,0 +1,26 @@
+{
+  "heading": "GET IN TOUCH",
+  "subheading": "Let's build something amazing together",
+  "links": [
+    {
+      "icon": "fab fa-linkedin",
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/anarv-s-91811a173/",
+      "color": "#66d9ef"
+    },
+    {
+      "icon": "fab fa-github",
+      "label": "GitHub",
+      "url": "https://github.com/Anarvsingh",
+      "color": "#ffd93d"
+    },
+    {
+      "icon": "fas fa-envelope",
+      "label": "Email",
+      "url": "mailto:anarvsingh@gmail.com",
+      "color": "#ff6b9d"
+    }
+  ],
+  "email": "anarvsingh@gmail.com",
+  "availability": "Open to opportunities"
+}

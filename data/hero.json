@@ -1,0 +1,127 @@
+{
+  "greeting": "Hi there!",
+  "name": "Anarv Singh",
+  "description": "Based in IL, USA. Software Engineer with 5+ years of experience focused on backend development, distributed systems, and cloud-based applications using Java, Spring Boot, Kafka, AWS, PostgreSQL, Docker, and Kubernetes.",
+  "tagline": "Software Engineer | Backend Engineer",
+  "avatarUrl": "",
+  "socialLinks": [
+    {
+      "icon": "fab fa-github",
+      "url": "https://github.com/Anarvsingh",
+      "label": "GitHub"
+    },
+    {
+      "icon": "fab fa-linkedin",
+      "url": "https://www.linkedin.com/in/anarv-s-91811a173/",
+      "label": "LinkedIn"
+    },
+    {
+      "icon": "fas fa-envelope",
+      "url": "mailto:anarvsingh@gmail.com",
+      "label": "Email"
+    }
+  ],
+  "techBadges": [
+    {
+      "icon": "fab fa-java",
+      "label": "Java"
+    },
+    {
+      "icon": "fab fa-python",
+      "label": "Python"
+    },
+    {
+      "icon": "fas fa-database",
+      "label": "SQL"
+    },
+    {
+      "icon": "fab fa-js",
+      "label": "JavaScript"
+    },
+    {
+      "icon": "fab fa-js",
+      "label": "TypeScript"
+    },
+    {
+      "icon": "fas fa-chart-line",
+      "label": "Spring Boot"
+    },
+    {
+      "icon": "fas fa-chart-line",
+      "label": "Spring MVC"
+    },
+    {
+      "icon": "fas fa-chart-line",
+      "label": "Hibernate"
+    }
+  ],
+  "terminalCommands": {
+    "about": {
+      "title": "About Me",
+      "content": "Software Engineer | Backend Engineer with 2+ years of experience building scalable web applications.",
+      "highlights": [
+        "Working with Java",
+        "Working with Python",
+        "Working with SQL"
+      ]
+    },
+    "skills": [
+      "Java",
+      "Python",
+      "SQL",
+      "JavaScript",
+      "TypeScript",
+      "Spring Boot",
+      "Spring MVC",
+      "Hibernate",
+      "JPA",
+      "Node.js",
+      "Express.js",
+      "Spring Security",
+      "AWS EC2",
+      "ECS",
+      "Lambda",
+      "S3"
+    ],
+    "experience": [
+      {
+        "company": "Walmart",
+        "title": "Software Engineer II – Backend Platforms",
+        "period": "Aug 2024 – Present",
+        "location": ""
+      },
+      {
+        "company": "Cybage Software",
+        "title": "Software Engineer - Backend Development",
+        "period": "May 2020 - Aug 2023",
+        "location": ""
+      }
+    ],
+    "education": [
+      {
+        "degree": "Master's",
+        "institution": "Illinois Institute of Technology",
+        "period": "May 2025"
+      },
+      {
+        "degree": "Bachelors",
+        "institution": "SRM University",
+        "period": "May 2020"
+      }
+    ],
+    "contact": {
+      "email": "anarvsingh@gmail.com",
+      "website": "",
+      "github": "https://github.com/Anarvsingh",
+      "linkedin": "https://www.linkedin.com/in/anarv-s-91811a173/"
+    }
+  },
+  "terminalLines": [
+    "$ whoami",
+    "Anarv Singh",
+    "$ cat role.txt",
+    "Software Engineer | Backend Engineer",
+    "$ ls skills/",
+    "Java  Python  SQL  JavaScript  TypeScript"
+  ]
+}

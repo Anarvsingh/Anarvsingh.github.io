@@ -1,0 +1,64 @@
+{
+  "heading": "My Journey",
+  "positions": [
+    {
+      "title": "Software Engineer II – Backend Platforms",
+      "company": "Walmart",
+      "startDate": "Aug 2024",
+      "endDate": "Present",
+      "description": "Increased backend transaction throughput by 42% after redesigning Java and Spring Boot microservices supporting inventory synchronization, payment processing, and order lifecycle workflows across high-traffic retail applications serving nationwide customers daily.\nReduced API response latency from 1.9 seconds to 1.1 seconds by optimizing PostgreSQL queries, introducing Redis caching layers, and restructuring asynchronous request handling across distributed backend services processing millions of records weekly.\nDelivered Kafka-based event processing pipelines managing over 4 million daily inventory updates, improving synchronization accuracy by 31% between fulfillment, logistics, pricing, and warehouse management systems operating across multiple enterprise environments.\nShortened production deployment timelines by 48% through containerized Docker environments, Kubernetes orchestration, and automated Jenkins pipelines, reducing manual release dependencies while improving rollback recovery during enterprise software deployment activities significantly.\nStrengthened backend security by implementing OAuth2, JWT authentication frameworks, and role-based authorization controls, reducing unauthorized access incidents and supporting enterprise compliance standards across customer-facing backend applications and internal systems.\nImproved production observability through centralized logging, CloudWatch metrics, and Splunk dashboards, decreasing average incident resolution time from 95 minutes to 54 minutes during high-priority production support escalations and backend outage investigations.",
+      "location": "",
+      "achievements": [
+        "Increased backend transaction throughput by 42% after redesigning Java and Spring Boot microservices supporting inventory synchronization, payment processing, and order lifecycle workflows across high-traffic retail applications serving nationwide customers daily.",
+        "Reduced API response latency from 1.9 seconds to 1.1 seconds by optimizing PostgreSQL queries, introducing Redis caching layers, and restructuring asynchronous request handling across distributed backend services processing millions of records weekly.",
+        "Delivered Kafka-based event processing pipelines managing over 4 million daily inventory updates, improving synchronization accuracy by 31% between fulfillment, logistics, pricing, and warehouse management systems operating across multiple enterprise environments.",
+        "Shortened production deployment timelines by 48% through containerized Docker environments, Kubernetes orchestration, and automated Jenkins pipelines, reducing manual release dependencies while improving rollback recovery during enterprise software deployment activities significantly.",
+        "Strengthened backend security by implementing OAuth2, JWT authentication frameworks, and role-based authorization controls, reducing unauthorized access incidents and supporting enterprise compliance standards across customer-facing backend applications and internal systems.",
+        "Improved production observability through centralized logging, CloudWatch metrics, and Splunk dashboards, decreasing average incident resolution time from 95 minutes to 54 minutes during high-priority production support escalations and backend outage investigations."
+      ],
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "PostgreSQL",
+        "Redis",
+        "Kafka",
+        "Docker",
+        "Kubernetes",
+        "Jenkins",
+        "OAuth2",
+        "JWT",
+        "CloudWatch",
+        "Splunk"
+      ]
+    },
+    {
+      "title": "Software Engineer - Backend Development",
+      "company": "Cybage Software",
+      "startDate": "May 2020",
+      "endDate": "Aug 2023",
+      "description": "Built Spring Boot backend services supporting healthcare and retail platforms processing over 2.5 million monthly transactions, improving application reliability, workflow execution consistency, and enterprise reporting accuracy across distributed operational environments successfully.\nIncreased backend processing efficiency by 37% through multithreading implementation, asynchronous communication patterns, optimized SQL execution plans, and Redis caching strategies supporting enterprise applications handling high-volume concurrent user requests daily across environments.\nEngineered REST API integrations connecting enterprise applications with third-party services, reducing manual reconciliation efforts by 46% while improving secure data exchange consistency across business-critical operational workflows and enterprise reporting systems significantly.\nImproved database performance by redesigning PostgreSQL and MySQL indexing strategies, lowering query execution time by 41% and stabilizing backend transaction handling for enterprise applications supporting geographically distributed client operations and reporting platforms globally.\nAutomated deployment workflows using Jenkins, Docker, Kubernetes, Git, and Linux environments, reducing release preparation efforts by 52% while improving deployment consistency, environment stability, and software delivery efficiency across engineering teams significantly.\nResolved more than 180 production incidents involving backend failures, API disruptions, and database bottlenecks, improving application stability through root cause analysis, performance tuning, structured debugging, and proactive backend monitoring initiatives across enterprise systems.",
+      "location": "",
+      "achievements": [
+        "Built Spring Boot backend services supporting healthcare and retail platforms processing over 2.5 million monthly transactions, improving application reliability, workflow execution consistency, and enterprise reporting accuracy across distributed operational environments successfully.",
+        "Increased backend processing efficiency by 37% through multithreading implementation, asynchronous communication patterns, optimized SQL execution plans, and Redis caching strategies supporting enterprise applications handling high-volume concurrent user requests daily across environments.",
+        "Engineered REST API integrations connecting enterprise applications with third-party services, reducing manual reconciliation efforts by 46% while improving secure data exchange consistency across business-critical operational workflows and enterprise reporting systems significantly.",
+        "Improved database performance by redesigning PostgreSQL and MySQL indexing strategies, lowering query execution time by 41% and stabilizing backend transaction handling for enterprise applications supporting geographically distributed client operations and reporting platforms globally.",
+        "Automated deployment workflows using Jenkins, Docker, Kubernetes, Git, and Linux environments, reducing release preparation efforts by 52% while improving deployment consistency, environment stability, and software delivery efficiency across engineering teams significantly.",
+        "Resolved more than 180 production incidents involving backend failures, API disruptions, and database bottlenecks, improving application stability through root cause analysis, performance tuning, structured debugging, and proactive backend monitoring initiatives across enterprise systems."
+      ],
+      "technologies": [
+        "Spring Boot",
+        "Redis",
+        "SQL",
+        "REST API",
+        "PostgreSQL",
+        "MySQL",
+        "Jenkins",
+        "Docker",
+        "Kubernetes",
+        "Git",
+        "Linux"
+      ]
+    }
+  ]
+}

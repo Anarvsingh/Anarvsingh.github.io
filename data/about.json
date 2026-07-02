@@ -1,0 +1,44 @@
+{
+  "heading": "ABOUT",
+  "paragraphs": [
+    {
+      "text": "Software Engineer with 5+ years of experience focused on backend development, distributed systems, and cloud-based applications using Java, Spring Boot, Kafka, AWS, PostgreSQL, Docker, and Kubernetes. Built backend services supporting high-volume transactions, API integrations, real-time event processing, and production-scale enterprise applications. Hands-on experience improving application performance, optimizing databases, automating deployments, and resolving production issues within Agile engineering teams. Strong foundation in microservices architecture, CI/CD pipelines, backend security, and scalable system design supporting retail and enterprise platforms.",
+      "highlights": []
+    },
+    {
+      "text": "Experienced software engineer | backend engineer with {yearsExp} of hands-on experience across {industries}.",
+      "highlights": [
+        {
+          "text": "2+ years",
+          "color": "yellow",
+          "key": "yearsExp"
+        },
+        {
+          "text": "healthcare, retail, security",
+          "color": "pink",
+          "key": "industries"
+        }
+      ]
+    },
+    {
+      "text": "I bring a unique blend of {blend1}, {blend2}, and a genuine enthusiasm for {blend3}.",
+      "highlights": [
+        {
+          "text": "technical expertise",
+          "color": "yellow",
+          "key": "blend1"
+        },
+        {
+          "text": "collaborative leadership",
+          "color": "green",
+          "key": "blend2"
+        },
+        {
+          "text": "building impactful solutions",
+          "color": "cyan",
+          "key": "blend3"
+        }
+      ]
+    }
+  ]
+}

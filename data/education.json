@@ -1,0 +1,23 @@
+{
+  "heading": "EDUCATION",
+  "entries": [
+    {
+      "degree": "Master's",
+      "institution": "Illinois Institute of Technology",
+      "startDate": "2025",
+      "endDate": "",
+      "gpa": "",
+      "honors": []
+    },
+    {
+      "degree": "Bachelors",
+      "institution": "SRM University",
+      "startDate": "2020",
+      "endDate": "",
+      "gpa": "",
+      "honors": []
+    }
+  ],
+  "certifications": [],
+  "languages": []
+}

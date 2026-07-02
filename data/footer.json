@@ -1,0 +1,41 @@
+{
+  "brandName": "ANARV SINGH",
+  "brandTitle": "Software Engineer | Backend Engineer",
+  "navLinks": [
+    {
+      "label": "Home",
+      "href": "#hero"
+    },
+    {
+      "label": "About",
+      "href": "#about"
+    },
+    {
+      "label": "Experience",
+      "href": "#experience"
+    },
+    {
+      "label": "Skills",
+      "href": "#skills"
+    }
+  ],
+  "socialLinks": [
+    {
+      "icon": "fab fa-github",
+      "url": "https://github.com/Anarvsingh",
+      "label": "GitHub"
+    },
+    {
+      "icon": "fab fa-linkedin",
+      "url": "https://www.linkedin.com/in/anarv-s-91811a173/",
+      "label": "LinkedIn"
+    },
+    {
+      "icon": "fas fa-envelope",
+      "url": "mailto:anarvsingh@gmail.com",
+      "label": "Email"
+    }
+  ],
+  "copyright": "Anarv Singh",
+  "year": "2026"
+}
