@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Primary Meta Tags (populated by JS from site-config.json) -->
-    <title>Portfolio</title>
-    <meta name="description" content="">
+    <!-- Primary Meta Tags -->
+    <title>Anarv Singh — Software Engineer</title>
+    <meta name="description" content="Anarv Singh — software engineer specializing in backend development, distributed systems, and cloud applications with Java, Spring Boot, Kafka, and AWS.">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#ffd93d">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="Anarv Singh — Software Engineer">
+    <meta property="og:description" content="Anarv Singh — software engineer specializing in backend development, distributed systems, and cloud applications with Java, Spring Boot, Kafka, and AWS.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anarvsingh.com/">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://anarvsingh.com/">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23ffd93d'/%3E%3Ctext x='50' y='54' font-family='sans-serif' font-size='68' font-weight='bold' fill='%23000' text-anchor='middle' dominant-baseline='middle'%3EA%3C/text%3E%3C/svg%3E">
 
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,11 +38,13 @@
 </head>
 <body>
 
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <!-- ================================================================
          LOADING SCREEN
          ================================================================ -->
     <div class="loader-overlay">
-        <div class="loader-shapes">
+        <div class="loader-shapes" aria-hidden="true">
             <div class="loader-shape-svg loader-shape-1">
                 <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="6" y="6" width="88" height="88" rx="8" fill="#66d9ef" stroke="#000" stroke-width="4"/>
@@ -61,8 +75,8 @@
         </div>
         <div class="loader-wrapper">
             <!-- Initials populated by JS from site-config.json -->
-            <div class="loader-letter">P</div>
-            <div class="loader-letter">F</div>
+            <div class="loader-letter">A</div>
+            <div class="loader-letter">S</div>
         </div>
         <div class="loader-progress-bar">
             <div class="loader-progress-fill"></div>
@@ -112,9 +126,9 @@
                 </div>
                 <div class="hero-right">
                     <div class="hero-image-wrapper">
-                        <div class="tape-sticker"></div>
+                        <div class="tape-sticker" aria-hidden="true"></div>
                         <!-- Avatar or placeholder populated by JS -->
-                        <div class="deco-code">
+                        <div class="deco-code" aria-hidden="true">
                             <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="6" y="6" width="88" height="88" rx="8" fill="#66d9ef" stroke="#000" stroke-width="4"/>
                                 <rect x="3" y="3" width="88" height="88" rx="8" fill="#66d9ef" stroke="#000" stroke-width="4"/>
@@ -123,7 +137,7 @@
                                 <line x1="55" y1="35" x2="45" y2="65" stroke="#000" stroke-width="5" stroke-linecap="round"/>
                             </svg>
                         </div>
-                        <div class="deco-terminal">
+                        <div class="deco-terminal" aria-hidden="true">
                             <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="6" y="6" width="88" height="88" rx="8" fill="#ffd93d" stroke="#000" stroke-width="4"/>
                                 <rect x="3" y="3" width="88" height="88" rx="8" fill="#ffd93d" stroke="#000" stroke-width="4"/>
@@ -131,7 +145,7 @@
                                 <line x1="50" y1="65" x2="75" y2="65" stroke="#000" stroke-width="5" stroke-linecap="round"/>
                             </svg>
                         </div>
-                        <div class="deco-floppy">
+                        <div class="deco-floppy" aria-hidden="true">
                             <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="6" y="6" width="88" height="88" rx="8" fill="#a8e6cf" stroke="#000" stroke-width="4"/>
                                 <rect x="3" y="3" width="88" height="88" rx="8" fill="#a8e6cf" stroke="#000" stroke-width="4"/>
@@ -158,17 +172,12 @@
                     <!-- Populated by JS from hero.json terminalCommands -->
                 </div>
             </div>
-
-            <!-- Tech Badges -->
-            <div class="tech-badges" style="margin-top: 2rem;">
-                <!-- Populated by JS from hero.json -->
-            </div>
         </section>
 
         <!-- ============================================================
              PAPER TEAR DIVIDER (between hero and content)
              ============================================================ -->
-        <div class="paper-tear paper-tear-top">
+        <div class="paper-tear paper-tear-top" aria-hidden="true">
             <svg width="100%" height="30" viewBox="0 0 1440 30" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0,0 L0,15 Q10,5 20,15 T40,15 Q50,5 60,15 T80,15 Q90,20 100,15 T120,15 Q130,10 140,15 T160,15 Q170,5 180,15 T200,15 Q210,20 220,15 T240,15 Q250,8 260,15 T280,15 Q290,18 300,15 T320,15 Q330,5 340,15 T360,15 Q370,12 380,15 T400,15 Q410,20 420,15 T440,15 Q450,6 460,15 T480,15 Q490,16 500,15 T520,15 Q530,8 540,15 T560,15 Q570,20 580,15 T600,15 Q610,10 620,15 T640,15 Q650,5 660,15 T680,15 Q690,18 700,15 T720,15 Q730,12 740,15 T760,15 Q770,7 780,15 T800,15 Q810,20 820,15 T840,15 Q850,9 860,15 T880,15 Q890,14 900,15 T920,15 Q930,6 940,15 T960,15 Q970,19 980,15 T1000,15 Q1010,11 1020,15 T1040,15 Q1050,5 1060,15 T1080,15 Q1090,17 1100,15 T1120,15 Q1130,8 1140,15 T1160,15 Q1170,13 1180,15 T1200,15 Q1210,20 1220,15 T1240,15 Q1250,7 1260,15 T1280,15 Q1290,16 1300,15 T1320,15 Q1330,10 1340,15 T1360,15 Q1370,5 1380,15 T1400,15 Q1410,18 1420,15 T1440,15 L1440,0 Z" fill="#ffffff" stroke="none"/>
                 <path d="M0,30 L0,15 Q10,5 20,15 T40,15 Q50,5 60,15 T80,15 Q90,20 100,15 T120,15 Q130,10 140,15 T160,15 Q170,5 180,15 T200,15 Q210,20 220,15 T240,15 Q250,8 260,15 T280,15 Q290,18 300,15 T320,15 Q330,5 340,15 T360,15 Q370,12 380,15 T400,15 Q410,20 420,15 T440,15 Q450,6 460,15 T480,15 Q490,16 500,15 T520,15 Q530,8 540,15 T560,15 Q570,20 580,15 T600,15 Q610,10 620,15 T640,15 Q650,5 660,15 T680,15 Q690,18 700,15 T720,15 Q730,12 740,15 T760,15 Q770,7 780,15 T800,15 Q810,20 820,15 T840,15 Q850,9 860,15 T880,15 Q890,14 900,15 T920,15 Q930,6 940,15 T960,15 Q970,19 980,15 T1000,15 Q1010,11 1020,15 T1040,15 Q1050,5 1060,15 T1080,15 Q1090,17 1100,15 T1120,15 Q1130,8 1140,15 T1160,15 Q1170,13 1180,15 T1200,15 Q1210,20 1220,15 T1240,15 Q1250,7 1260,15 T1280,15 Q1290,16 1300,15 T1320,15 Q1330,10 1340,15 T1360,15 Q1370,5 1380,15 T1400,15 Q1410,18 1420,15 T1440,15 L1440,30 Z" fill="#d0d0d0" stroke="none"/>
@@ -178,7 +187,7 @@
 
         <div class="page-gap"></div>
 
-        <div class="paper-tear paper-tear-bottom">
+        <div class="paper-tear paper-tear-bottom" aria-hidden="true">
             <svg width="100%" height="30" viewBox="0 0 1440 30" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0,0 L0,15 Q10,5 20,15 T40,15 Q50,5 60,15 T80,15 Q90,20 100,15 T120,15 Q130,10 140,15 T160,15 Q170,5 180,15 T200,15 Q210,20 220,15 T240,15 Q250,8 260,15 T280,15 Q290,18 300,15 T320,15 Q330,5 340,15 T360,15 Q370,12 380,15 T400,15 Q410,20 420,15 T440,15 Q450,6 460,15 T480,15 Q490,16 500,15 T520,15 Q530,8 540,15 T560,15 Q570,20 580,15 T600,15 Q610,10 620,15 T640,15 Q650,5 660,15 T680,15 Q690,18 700,15 T720,15 Q730,12 740,15 T760,15 Q770,7 780,15 T800,15 Q810,20 820,15 T840,15 Q850,9 860,15 T880,15 Q890,14 900,15 T920,15 Q930,6 940,15 T960,15 Q970,19 980,15 T1000,15 Q1010,11 1020,15 T1040,15 Q1050,5 1060,15 T1080,15 Q1090,17 1100,15 T1120,15 Q1130,8 1140,15 T1160,15 Q1170,13 1180,15 T1200,15 Q1210,20 1220,15 T1240,15 Q1250,7 1260,15 T1280,15 Q1290,16 1300,15 T1320,15 Q1330,10 1340,15 T1360,15 Q1370,5 1380,15 T1400,15 Q1410,18 1420,15 T1440,15 L1440,0 Z" fill="#d0d0d0" stroke="none"/>
                 <path d="M0,30 L0,15 Q10,5 20,15 T40,15 Q50,5 60,15 T80,15 Q90,20 100,15 T120,15 Q130,10 140,15 T160,15 Q170,5 180,15 T200,15 Q210,20 220,15 T240,15 Q250,8 260,15 T280,15 Q290,18 300,15 T320,15 Q330,5 340,15 T360,15 Q370,12 380,15 T400,15 Q410,20 420,15 T440,15 Q450,6 460,15 T480,15 Q490,16 500,15 T520,15 Q530,8 540,15 T560,15 Q570,20 580,15 T600,15 Q610,10 620,15 T640,15 Q650,5 660,15 T680,15 Q690,18 700,15 T720,15 Q730,12 740,15 T760,15 Q770,7 780,15 T800,15 Q810,20 820,15 T840,15 Q850,9 860,15 T880,15 Q890,14 900,15 T920,15 Q930,6 940,15 T960,15 Q970,19 980,15 T1000,15 Q1010,11 1020,15 T1040,15 Q1050,5 1060,15 T1080,15 Q1090,17 1100,15 T1120,15 Q1130,8 1140,15 T1160,15 Q1170,13 1180,15 T1200,15 Q1210,20 1220,15 T1240,15 Q1250,7 1260,15 T1280,15 Q1290,16 1300,15 T1320,15 Q1330,10 1340,15 T1360,15 Q1370,5 1380,15 T1400,15 Q1410,18 1420,15 T1440,15 L1440,30 Z" fill="#ffffff" stroke="none"/>
@@ -186,12 +195,10 @@
             </svg>
         </div>
 
-        <div class="tear-tape-sticker"></div>
-
         <!-- ============================================================
              MAIN CONTENT SECTIONS
              ============================================================ -->
-        <div class="container">
+        <main id="main" class="container">
 
             <!-- ABOUT (populated by JS from about.json) -->
             <section class="section" id="about">
@@ -245,24 +252,24 @@
                 </div>
             </section>
 
-            <!-- FOOTER (populated by JS from footer.json) -->
-            <footer class="footer">
-                <div class="footer-compact">
-                    <div class="footer-main">
-                        <div class="footer-brand-compact">
-                            <strong></strong>
-                            <span></span>
-                        </div>
-                        <div class="footer-nav-compact"><!-- Populated by JS --></div>
-                        <div class="footer-social-compact"><!-- Populated by JS --></div>
-                    </div>
-                    <div class="footer-bottom-compact">
-                        <span class="footer-copyright"></span>
-                    </div>
-                </div>
-            </footer>
+        </main>
 
-        </div>
+        <!-- FOOTER (populated by JS from footer.json) -->
+        <footer class="footer">
+            <div class="footer-compact">
+                <div class="footer-main">
+                    <div class="footer-brand-compact">
+                        <strong></strong>
+                        <span></span>
+                    </div>
+                    <div class="footer-nav-compact"><!-- Populated by JS --></div>
+                    <div class="footer-social-compact"><!-- Populated by JS --></div>
+                </div>
+                <div class="footer-bottom-compact">
+                    <span class="footer-copyright"></span>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <!-- Main Script -->

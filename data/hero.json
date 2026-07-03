@@ -21,44 +21,10 @@
       "label": "Email"
     }
   ],
-  "techBadges": [
-    {
-      "icon": "fab fa-java",
-      "label": "Java"
-    },
-    {
-      "icon": "fab fa-python",
-      "label": "Python"
-    },
-    {
-      "icon": "fas fa-database",
-      "label": "SQL"
-    },
-    {
-      "icon": "fab fa-js",
-      "label": "JavaScript"
-    },
-    {
-      "icon": "fab fa-js",
-      "label": "TypeScript"
-    },
-    {
-      "icon": "fas fa-chart-line",
-      "label": "Spring Boot"
-    },
-    {
-      "icon": "fas fa-chart-line",
-      "label": "Spring MVC"
-    },
-    {
-      "icon": "fas fa-chart-line",
-      "label": "Hibernate"
-    }
-  ],
   "terminalCommands": {
     "about": {
       "title": "About Me",
-      "content": "Software Engineer | Backend Engineer with 2+ years of experience building scalable web applications.",
+      "content": "Software Engineer | Backend Engineer with 5+ years of experience building scalable web applications.",
       "highlights": [
         "Working with Java",
         "Working with Python",
@@ -67,21 +33,13 @@
     },
     "skills": [
       "Java",
-      "Python",
-      "SQL",
-      "JavaScript",
-      "TypeScript",
       "Spring Boot",
-      "Spring MVC",
-      "Hibernate",
-      "JPA",
-      "Node.js",
-      "Express.js",
-      "Spring Security",
-      "AWS EC2",
-      "ECS",
-      "Lambda",
-      "S3"
+      "Kafka",
+      "AWS",
+      "PostgreSQL",
+      "Docker",
+      "Kubernetes",
+      "Redis"
     ],
     "experience": [
       {
@@ -99,12 +57,12 @@
     ],
     "education": [
       {
-        "degree": "Master's",
+        "degree": "Master's Degree",
         "institution": "Illinois Institute of Technology",
-        "period": "May 2025"
+        "period": "2025 – Present"
       },
       {
-        "degree": "Bachelors",
+        "degree": "Bachelor's Degree",
         "institution": "SRM University",
         "period": "May 2020"
       }

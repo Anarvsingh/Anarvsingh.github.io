@@ -26,7 +26,14 @@
 
   async function loadAllData() {
     const responses = await Promise.all(
-      DATA_FILES.map((url) => fetch(url).then((r) => r.json()))
+      DATA_FILES.map((url) =>
+        fetch(url)
+          .then((r) => r.json())
+          .catch((err) => {
+            console.warn('Failed to load ' + url, err);
+            return null;
+          })
+      )
     );
     return {
       siteConfig: responses[0],
@@ -69,9 +76,9 @@
       checkpointsContainer.innerHTML = data.progressCheckpoints
         .map(
           (cp) => `
-        <div class="checkpoint" data-section="${cp.id}">
+        <div class="checkpoint" data-section="${escapeHtml(cp.id)}">
           <div class="checkpoint-dot"></div>
-          <span class="checkpoint-label">${cp.label}</span>
+          <span class="checkpoint-label">${escapeHtml(cp.label)}</span>
         </div>`
         )
         .join('');
@@ -85,13 +92,39 @@
     const navRight = document.querySelector('.nav-right');
     if (navRight && data.items) {
       const linksHtml = data.items
-        .map((item) => `<a href="${item.href}" class="nav-link">${item.label}</a>`)
+        .map((item) => `<a href="${item.href}" class="nav-link">${escapeHtml(item.label)}</a>`)
         .join('');
       const ctaHtml = data.ctaText
-        ? `<a href="${data.ctaHref || '#contact'}" class="nav-cta">${data.ctaText}</a>`
+        ? `<a href="${data.ctaHref || '#contact'}" class="nav-cta">${escapeHtml(data.ctaText)}</a>`
         : '';
       const themeBtn = `<button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>`;
       navRight.innerHTML = linksHtml + ctaHtml + themeBtn;
+    }
+
+    // Mobile hamburger button (inserted into .nav-content after .nav-right)
+    const navContent = document.querySelector('.nav-content');
+    if (navContent && navRight && !navContent.querySelector('.hamburger')) {
+      const hamburger = document.createElement('button');
+      hamburger.className = 'hamburger';
+      hamburger.setAttribute('aria-label', 'Open menu');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.innerHTML = '<span></span><span></span><span></span>';
+      navContent.appendChild(hamburger);
+
+      hamburger.addEventListener('click', () => {
+        const isOpen = hamburger.classList.toggle('active');
+        navRight.classList.toggle('mobile-open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Clicking any nav link closes the menu
+      navRight.addEventListener('click', (e) => {
+        if (e.target.closest('a')) {
+          hamburger.classList.remove('active');
+          navRight.classList.remove('mobile-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
     }
   }
 
@@ -158,87 +191,40 @@
       socialContainer.innerHTML = data.socialLinks
         .map(
           (link) =>
-            `<a href="${link.url}" target="_blank" class="social-btn" title="${link.label}"><i class="${link.icon}"></i></a>`
-        )
-        .join('');
-    }
-
-    // Tech badges
-    const badgesContainer = document.querySelector('.tech-badges');
-    if (badgesContainer && data.techBadges) {
-      badgesContainer.innerHTML = data.techBadges
-        .map(
-          (badge) =>
-            `<span class="tech-badge"><i class="${badge.icon}"></i> ${badge.label}</span>`
+            `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="social-btn" title="${escapeHtml(link.label)}" aria-label="${escapeHtml(link.label)}"><i class="${link.icon}"></i></a>`
         )
         .join('');
     }
 
     // Terminal block
-    renderTerminal(data.terminalCommands || {}, data.name || 'Developer');
+    renderTerminal(data.terminalCommands || {}, data.name || 'Developer', data.tagline || '');
   }
 
-  function renderTerminal(cmds, name) {
+  function renderTerminal(cmds, name, tagline) {
     const terminalBody = document.querySelector('.terminal-body');
     if (!terminalBody) return;
 
-    // Build ASCII art from name
-    const initials = name
-      .split(' ')
-      .map((w) => w[0])
-      .join('')
-      .toUpperCase();
-
-    let lines = [];
+    const lines = [];
     lines.push({ type: 'highlight', text: `Welcome to ${name}'s Terminal` });
-    lines.push({ type: 'info', text: '─'.repeat(50) });
-    lines.push({ type: 'output', text: `Interactive Terminal Resume` });
-    lines.push({ type: 'info', text: '─'.repeat(50) });
-    lines.push({ type: 'output', text: '' });
 
-    // About section
-    if (cmds.about) {
-      lines.push({ type: 'prompt-cmd', prompt: '~$', cmd: 'about' });
-      lines.push({ type: 'accent', text: cmds.about.title || 'About Me' });
-      lines.push({ type: 'output', text: cmds.about.content || '' });
-      if (cmds.about.highlights) {
-        cmds.about.highlights.forEach((h) => {
-          lines.push({ type: 'info', text: '  > ' + h });
-        });
-      }
-      lines.push({ type: 'output', text: '' });
-    }
+    // whoami
+    lines.push({ type: 'prompt-cmd', prompt: '~$', cmd: 'whoami' });
+    lines.push({ type: 'output', text: tagline ? `${name} — ${tagline}` : name });
 
-    // Skills
-    if (cmds.skills && cmds.skills.length) {
-      lines.push({ type: 'prompt-cmd', prompt: '~$', cmd: 'skills' });
-      lines.push({ type: 'highlight', text: 'Technical Skills' });
-      // Chunk skills into rows
-      const chunks = [];
-      for (let i = 0; i < cmds.skills.length; i += 4) {
-        chunks.push(cmds.skills.slice(i, i + 4).join('  |  '));
-      }
-      chunks.forEach((chunk) => lines.push({ type: 'command', text: '  ' + chunk }));
-      lines.push({ type: 'output', text: '' });
-    }
-
-    // Experience
-    if (cmds.experience && cmds.experience.length) {
-      lines.push({ type: 'prompt-cmd', prompt: '~$', cmd: 'experience' });
-      lines.push({ type: 'highlight', text: 'Professional Experience' });
-      cmds.experience.forEach((exp) => {
-        lines.push({ type: 'command', text: `  ${exp.title} @ ${exp.company}` });
-        lines.push({ type: 'output', text: `  ${exp.period} | ${exp.location}` });
+    // skills (max ~8, formatted in 2 rows)
+    const skills = (cmds.skills || []).slice(0, 8);
+    if (skills.length) {
+      lines.push({ type: 'prompt-cmd', prompt: '~$', cmd: 'ls skills/' });
+      const half = Math.ceil(skills.length / 2);
+      [skills.slice(0, half), skills.slice(half)].forEach((row) => {
+        if (row.length) lines.push({ type: 'command', text: '  ' + row.join('  ') });
       });
-      lines.push({ type: 'output', text: '' });
     }
 
-    // Contact
+    // contact
     if (cmds.contact) {
       lines.push({ type: 'prompt-cmd', prompt: '~$', cmd: 'contact' });
-      lines.push({ type: 'accent', text: 'Contact Information' });
       if (cmds.contact.email) lines.push({ type: 'output', text: '  Email:    ' + cmds.contact.email });
-      if (cmds.contact.website) lines.push({ type: 'output', text: '  Website:  ' + cmds.contact.website });
       if (cmds.contact.github) lines.push({ type: 'output', text: '  GitHub:   ' + cmds.contact.github });
       if (cmds.contact.linkedin) lines.push({ type: 'output', text: '  LinkedIn: ' + cmds.contact.linkedin });
     }
@@ -247,7 +233,7 @@
     terminalBody.innerHTML = lines
       .map((line) => {
         if (line.type === 'prompt-cmd') {
-          return `<div class="terminal-line"><span class="terminal-prompt">${line.prompt}</span> <span class="terminal-command">${line.cmd}</span></div>`;
+          return `<div class="terminal-line"><span class="terminal-prompt">${escapeHtml(line.prompt)}</span> <span class="terminal-command">${escapeHtml(line.cmd)}</span></div>`;
         }
         const cls =
           line.type === 'highlight'
@@ -271,9 +257,10 @@
     const card = document.querySelector('#about .card');
     if (!card || !data.paragraphs) return;
 
+    card.className = 'about-content';
     card.innerHTML = data.paragraphs
       .map((para) => {
-        let text = para.text || '';
+        let text = escapeHtml(para.text || '');
         // Replace highlight placeholders
         if (para.highlights) {
           para.highlights.forEach((h) => {
@@ -281,11 +268,11 @@
             const placeholder = `{${h.key}}`;
             text = text.replace(
               placeholder,
-              `<span class="highlight ${colorClass}">${h.text}</span>`
+              `<span class="highlight ${colorClass}">${escapeHtml(h.text)}</span>`
             );
           });
         }
-        return `<p class="text">${text}</p>`;
+        return `<p class="about-paragraph">${text}</p>`;
       })
       .join('');
   }
@@ -298,18 +285,37 @@
     if (!timelineList || !data.positions) return;
 
     timelineList.innerHTML = data.positions
-      .map(
-        (pos) => `
-      <div class="timeline-item-flat">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content-flat">
-          <h4 class="timeline-title">${escapeHtml(pos.title)} @ ${escapeHtml(pos.company)}</h4>
-          <p class="timeline-date">${escapeHtml(pos.startDate)} - ${escapeHtml(pos.endDate || 'Present')}</p>
-          <p class="timeline-description">${escapeHtml(pos.description)}</p>
-          <p class="timeline-location"><i class="fas fa-map-marker-alt"></i> ${escapeHtml(pos.location || '')}</p>
+      .map((pos) => {
+        const date = `${escapeHtml(pos.startDate)} – ${escapeHtml(pos.endDate || 'Present')}`;
+        const companyText = pos.location
+          ? `${escapeHtml(pos.company)} · ${escapeHtml(pos.location)}`
+          : escapeHtml(pos.company);
+        const logoHtml = pos.logo
+          ? `<img class="timeline-logo" src="${escapeHtml(pos.logo)}" alt="" loading="lazy">`
+          : '';
+        const achievementsHtml = (pos.achievements || [])
+          .map((a) => `<li>${escapeHtml(a)}</li>`)
+          .join('');
+        const techHtml = (pos.technologies || [])
+          .map((t) => `<span class="tech-tag">${escapeHtml(t)}</span>`)
+          .join('');
+        return `
+      <div class="timeline-item">
+        <div class="timeline-marker-col">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line"></div>
         </div>
-      </div>`
-      )
+        <div class="timeline-card">
+          <div class="timeline-card-header">
+            <h3 class="timeline-job-title">${escapeHtml(pos.title)}</h3>
+            <div class="timeline-company-wrap">${logoHtml}<span class="timeline-company">${companyText}</span></div>
+            <div class="timeline-date">${date}</div>
+          </div>
+          ${achievementsHtml ? `<ul class="timeline-achievements">${achievementsHtml}</ul>` : ''}
+          ${techHtml ? `<div class="timeline-technologies">${techHtml}</div>` : ''}
+        </div>
+      </div>`;
+      })
       .join('');
   }
 
@@ -358,22 +364,24 @@
       .map((proj) => {
         const linksHtml = [];
         if (proj.githubUrl) {
-          linksHtml.push(`<a href="${proj.githubUrl}" target="_blank" class="icon-link" title="GitHub"><i class="fab fa-github"></i></a>`);
+          linksHtml.push(
+            `<a href="${proj.githubUrl}" target="_blank" rel="noopener noreferrer" class="project-link">Code</a>`
+          );
         }
-        if (proj.liveUrl) {
-          linksHtml.push(`<a href="${proj.liveUrl}" target="_blank" class="icon-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>`);
+        if (proj.liveUrl && proj.liveUrl !== proj.githubUrl) {
+          linksHtml.push(
+            `<a href="${proj.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-link">Live Demo</a>`
+          );
         }
         const techHtml = (proj.technologies || [])
-          .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
+          .map((t) => `<span class="tech-tag">${escapeHtml(t)}</span>`)
           .join('');
         return `
         <div class="project-card">
-          <div class="project-header">
-            <h3 class="project-title">${escapeHtml(proj.name)}</h3>
-            <div class="project-links">${linksHtml.join('')}</div>
-          </div>
-          <p class="project-desc">${escapeHtml(proj.description)}</p>
-          <div class="tech-tags">${techHtml}</div>
+          <h3 class="project-name">${escapeHtml(proj.name)}</h3>
+          <p class="project-description">${escapeHtml(proj.description)}</p>
+          <div class="project-technologies">${techHtml}</div>
+          <div class="project-links">${linksHtml.join('')}</div>
         </div>`;
       })
       .join('');
@@ -388,16 +396,19 @@
 
       const card = eduColumn.querySelector('.education-card');
       if (card && data.entries && data.entries.length) {
-        const entry = data.entries[0]; // Primary entry
-        card.innerHTML = `
-          <div class="education-header">
-            <div>
-              <h3 class="education-title">${escapeHtml(entry.degree)}</h3>
-              <p class="education-school">${escapeHtml(entry.institution)}</p>
-            </div>
-            <span class="badge">${escapeHtml(entry.startDate || '')} - ${escapeHtml(entry.endDate || '')}</span>
-          </div>
-          <p class="education-location"><i class="fas fa-map-marker-alt"></i> ${escapeHtml(entry.location || '')}</p>`;
+        const entryHtml = (entry) => {
+          const date = entry.endDate
+            ? `${escapeHtml(entry.startDate || '')} – ${escapeHtml(entry.endDate)}`
+            : escapeHtml(entry.startDate || '');
+          return `
+          <h3 class="education-degree">${escapeHtml(entry.degree)}</h3>
+          <p class="education-institution">${escapeHtml(entry.institution)}</p>
+          <div class="education-meta">
+            <span>${date}</span>
+          </div>`;
+        };
+
+        card.innerHTML = entryHtml(data.entries[0]);
 
         // If multiple entries, append more
         if (data.entries.length > 1) {
@@ -405,15 +416,7 @@
             const extraCard = document.createElement('div');
             extraCard.className = 'card education-card';
             extraCard.style.marginTop = '1rem';
-            extraCard.innerHTML = `
-              <div class="education-header">
-                <div>
-                  <h3 class="education-title">${escapeHtml(e.degree)}</h3>
-                  <p class="education-school">${escapeHtml(e.institution)}</p>
-                </div>
-                <span class="badge">${escapeHtml(e.startDate || '')} - ${escapeHtml(e.endDate || '')}</span>
-              </div>
-              <p class="education-location"><i class="fas fa-map-marker-alt"></i> ${escapeHtml(e.location || '')}</p>`;
+            extraCard.innerHTML = entryHtml(e);
             card.after(extraCard);
           });
         }
@@ -425,19 +428,20 @@
     if (langColumn && data.languages && data.languages.length) {
       const langCard = langColumn.querySelector('.languages-card');
       if (langCard) {
-        langCard.innerHTML = data.languages
+        const itemsHtml = data.languages
           .map((lang) => {
-            const stars = Array.from({ length: 3 }, (_, i) => {
+            const dots = Array.from({ length: 3 }, (_, i) => {
               const filled = i < lang.level ? ' filled' : '';
-              return `<span class="star${filled}"></span>`;
+              return `<span class="language-dot${filled}"></span>`;
             }).join('');
             return `
-            <div class="language-item">
-              <span class="language-name-inline">${escapeHtml(lang.name)}</span>
-              <div class="language-stars">${stars}</div>
+            <div class="language-card">
+              <span class="language-name">${escapeHtml(lang.name)}</span>
+              <div class="language-dots">${dots}</div>
             </div>`;
           })
           .join('');
+        langCard.innerHTML = `<div class="language-items">${itemsHtml}</div>`;
       }
     } else if (langColumn) {
       // Hide languages column if no data
@@ -458,14 +462,40 @@
     if (!grid || !data.links) return;
 
     grid.innerHTML = data.links
-      .map(
-        (link) => `
-      <a href="${link.url}" target="_blank" class="contact-card">
+      .map((link) => {
+        const url = link.url || '';
+        const isMailto = url.indexOf('mailto:') === 0;
+        let detail = '';
+        if (isMailto) {
+          detail = url.slice('mailto:'.length);
+        } else {
+          try {
+            detail = new URL(url).hostname;
+          } catch (err) {
+            detail = url;
+          }
+        }
+        const targetAttrs = isMailto ? '' : ' target="_blank" rel="noopener noreferrer"';
+        return `
+      <a href="${url}"${targetAttrs} class="contact-card">
         <i class="${link.icon}"></i>
         <span>${escapeHtml(link.label)}</span>
-      </a>`
-      )
+        <span class="contact-detail">${escapeHtml(detail)}</span>
+      </a>`;
+      })
       .join('');
+
+    // Availability badge (after the grid)
+    const existingAvailability = grid.parentElement
+      ? grid.parentElement.querySelector('.contact-availability')
+      : null;
+    if (existingAvailability) existingAvailability.remove();
+    if (data.availability) {
+      const availability = document.createElement('div');
+      availability.className = 'contact-availability';
+      availability.innerHTML = `<span class="availability-badge"><span class="availability-dot"></span>${escapeHtml(data.availability)}</span>`;
+      grid.after(availability);
+    }
   }
 
   function renderFooter(data) {
@@ -486,14 +516,14 @@
       footerSocial.innerHTML = data.socialLinks
         .map(
           (link) =>
-            `<a href="${link.url}" target="_blank" title="${link.label}"><i class="${link.icon}"></i></a>`
+            `<a href="${link.url}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(link.label)}" aria-label="${escapeHtml(link.label)}"><i class="${link.icon}"></i></a>`
         )
         .join('');
     }
 
     const copyright = document.querySelector('.footer-copyright');
     if (copyright) {
-      copyright.textContent = `\u00A9 ${data.year || new Date().getFullYear()} ${data.copyright || ''}`;
+      copyright.textContent = `© ${data.year || new Date().getFullYear()} ${data.copyright || ''}`;
     }
   }
 
@@ -519,56 +549,24 @@
     });
   }
 
-  function initHighlightAnimations() {
-    const highlights = document.querySelectorAll('.highlight');
-    if (!highlights.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Randomly set direction
-            const direction = Math.random() > 0.5 ? 'right' : 'left';
-            entry.target.setAttribute('data-direction', direction);
-            entry.target.style.setProperty('--highlight-progress', '100%');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    highlights.forEach((el) => observer.observe(el));
-  }
-
-  function initLanguageStarAnimations() {
-    const stars = document.querySelectorAll('.language-stars .star');
-    if (!stars.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const starEls = entry.target.querySelectorAll('.star');
-            starEls.forEach((star, i) => {
-              setTimeout(() => star.classList.add('visible'), i * 150);
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    document.querySelectorAll('.language-stars').forEach((el) => observer.observe(el));
-  }
-
   function initProgressBar() {
+    const container = document.querySelector('.progress-bar-container');
     const fill = document.querySelector('.progress-bar-fill');
     if (!fill) return;
 
+    // Give each checkpoint a title attribute equal to its label
+    document.querySelectorAll('.checkpoint').forEach((cp) => {
+      const label = cp.querySelector('.checkpoint-label');
+      if (label) cp.setAttribute('title', label.textContent);
+    });
+
     function updateProgress() {
       const scrollTop = window.scrollY;
+
+      if (container) {
+        container.classList.toggle('visible', scrollTop > 100);
+      }
+
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       fill.style.width = progress + '%';
@@ -600,6 +598,26 @@
         const section = document.getElementById(sectionId);
         if (section) section.scrollIntoView({ behavior: 'smooth' });
       }
+    });
+  }
+
+  function initBackToTop() {
+    const btn = document.createElement('button');
+    btn.className = 'back-to-top';
+    btn.setAttribute('aria-label', 'Back to top');
+    btn.innerHTML = '<i class="fas fa-arrow-up" aria-hidden="true"></i>';
+    document.body.appendChild(btn);
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        btn.classList.toggle('visible', window.scrollY > 600);
+      },
+      { passive: true }
+    );
+
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
@@ -673,130 +691,6 @@
         if (photoTilted) heroPhoto.classList.add('tilted');
       });
     }
-
-    // Falling SVG deco
-    let terminalFallen = false;
-    const decoTerminal = document.querySelector('.deco-terminal');
-    const heroContent = document.querySelector('.hero-content');
-
-    if (decoTerminal && heroContent) {
-      function calculateFallDistance() {
-        const heroContentRect = heroContent.getBoundingClientRect();
-        const heroContentBottom = heroContentRect.bottom;
-        const terminalRect = decoTerminal.getBoundingClientRect();
-        const terminalFall = Math.max(0, heroContentBottom - terminalRect.bottom - 50);
-        decoTerminal.style.setProperty('--fall-distance', `${terminalFall}px`);
-      }
-
-      calculateFallDistance();
-      window.addEventListener('resize', calculateFallDistance);
-
-      window.addEventListener('scroll', () => {
-        if (!terminalFallen && window.scrollY > 5) {
-          decoTerminal.classList.add('falling');
-          terminalFallen = true;
-        }
-      }, { passive: true });
-    }
-  }
-
-  function initPaperTearParallax() {
-    const pageGap = document.querySelector('.page-gap');
-    const paperTearBottom = document.querySelector('.paper-tear-bottom');
-    const paperTearBottomBgGray = document.querySelector('.paper-tear-bottom svg path[fill="#d0d0d0"]');
-    const tearTapeSticker = document.querySelector('.tear-tape-sticker');
-    const minGapHeight = -30;
-
-    if (!pageGap || !paperTearBottom) return;
-
-    function updateTapePosition() {
-      if (paperTearBottom && tearTapeSticker) {
-        const rect = paperTearBottom.getBoundingClientRect();
-        tearTapeSticker.style.setProperty('--tape-position', `${rect.top}px`);
-      }
-    }
-
-    function updateGapParallax() {
-      const isMobile = window.innerWidth <= 768;
-      if (isMobile) return;
-
-      const scrollY = window.scrollY;
-      const initialGapHeight = 300;
-      const scrollStart = 100;
-      const scrollRange = 200;
-      const stickerDelay = 30;
-      const stickerStart = scrollStart + scrollRange + stickerDelay;
-      const stickerRange = 60;
-
-      updateTapePosition();
-
-      if (scrollY <= scrollStart) {
-        pageGap.style.setProperty('height', initialGapHeight + 'px', 'important');
-        paperTearBottom.style.setProperty('margin-top', '0px', 'important');
-        if (paperTearBottomBgGray) paperTearBottomBgGray.style.opacity = '1';
-        if (tearTapeSticker) {
-          tearTapeSticker.style.transform = 'rotate(-8deg) translateY(-40px) translateZ(30px) rotateX(35deg)';
-          tearTapeSticker.style.opacity = '0';
-        }
-      } else if (scrollY >= scrollStart && scrollY <= scrollStart + scrollRange) {
-        const progress = (scrollY - scrollStart) / scrollRange;
-        const currentHeight = initialGapHeight - (initialGapHeight - minGapHeight) * progress;
-
-        if (currentHeight >= 0) {
-          pageGap.style.setProperty('height', currentHeight + 'px', 'important');
-          paperTearBottom.style.setProperty('margin-top', '0px', 'important');
-          if (paperTearBottomBgGray) paperTearBottomBgGray.style.opacity = '1';
-          if (tearTapeSticker) {
-            tearTapeSticker.style.transform = 'rotate(-8deg) translateY(-100px) translateZ(50px) rotateX(45deg)';
-            tearTapeSticker.style.opacity = '0';
-          }
-        } else {
-          pageGap.style.setProperty('height', '0px', 'important');
-          paperTearBottom.style.setProperty('margin-top', currentHeight + 'px', 'important');
-          const negativePart = Math.abs(minGapHeight);
-          const negativeProgress = Math.abs(currentHeight) / negativePart;
-          const opacity = 1 - negativeProgress;
-          if (paperTearBottomBgGray) paperTearBottomBgGray.style.opacity = opacity;
-          if (tearTapeSticker) {
-            tearTapeSticker.style.transform = 'rotate(-8deg) translateY(-100px) translateZ(50px) rotateX(45deg)';
-            tearTapeSticker.style.opacity = '0';
-          }
-        }
-      } else if (scrollY > stickerStart && scrollY < stickerStart + stickerRange) {
-        pageGap.style.setProperty('height', '0px', 'important');
-        paperTearBottom.style.setProperty('margin-top', minGapHeight + 'px', 'important');
-        if (paperTearBottomBgGray) paperTearBottomBgGray.style.opacity = '0';
-        if (tearTapeSticker) {
-          const stickerProgress = (scrollY - stickerStart) / stickerRange;
-          const translateY = -40 + 40 * stickerProgress;
-          const translateZ = 30 - 30 * stickerProgress;
-          const rotateX = 35 - 35 * stickerProgress;
-          const opacityVal = Math.min(1, Math.max(0, (stickerProgress - 0.35) * 1.54));
-          tearTapeSticker.style.transform = `rotate(-8deg) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg)`;
-          tearTapeSticker.style.opacity = opacityVal;
-        }
-      } else if (scrollY >= stickerStart + stickerRange) {
-        pageGap.style.setProperty('height', '0px', 'important');
-        paperTearBottom.style.setProperty('margin-top', minGapHeight + 'px', 'important');
-        if (paperTearBottomBgGray) paperTearBottomBgGray.style.opacity = '0';
-        if (tearTapeSticker) {
-          tearTapeSticker.style.transform = 'rotate(-8deg) translateY(0px) translateZ(0px) rotateX(0deg)';
-          tearTapeSticker.style.opacity = '1';
-        }
-      } else {
-        pageGap.style.setProperty('height', '0px', 'important');
-        paperTearBottom.style.setProperty('margin-top', minGapHeight + 'px', 'important');
-        if (paperTearBottomBgGray) paperTearBottomBgGray.style.opacity = '0';
-        if (tearTapeSticker) {
-          tearTapeSticker.style.transform = 'rotate(-8deg) translateY(-40px) translateZ(30px) rotateX(35deg)';
-          tearTapeSticker.style.opacity = '0';
-        }
-      }
-    }
-
-    window.addEventListener('scroll', updateGapParallax, { passive: true });
-    window.addEventListener('resize', updateGapParallax);
-    requestAnimationFrame(updateGapParallax);
   }
 
   // ======================================================================
@@ -814,41 +708,48 @@
   // INITIALIZATION
   // ======================================================================
 
-  async function init() {
+  function safeRender(name, fn, data) {
     try {
-      const data = await loadAllData();
+      if (data) fn(data);
+    } catch (err) {
+      console.warn('Failed to render ' + name + ':', err);
+    }
+  }
 
-      // Render all sections
-      renderSiteConfig(data.siteConfig);
-      renderNavigation(data.navigation);
-      renderHero(data.hero);
-      renderAbout(data.about);
-      renderExperience(data.experience);
-      renderSkills(data.skills);
-      renderProjects(data.projects);
-      renderEducation(data.education);
-      renderContact(data.contact);
-      renderFooter(data.footer);
-
-      // Initialize interactions
-      initScrollAnimations();
-      initHighlightAnimations();
-      initLanguageStarAnimations();
-      initProgressBar();
-      initNavbarHide();
-      initThemeToggle();
-      initHeroAnimations();
-      initPaperTearParallax();
+  async function init() {
+    let data = {};
+    try {
+      data = await loadAllData();
     } catch (err) {
       console.error('Failed to load portfolio data:', err);
     }
+
+    // Render all sections (each isolated so one bad file can't blank the page)
+    safeRender('siteConfig', renderSiteConfig, data.siteConfig);
+    safeRender('navigation', renderNavigation, data.navigation);
+    safeRender('hero', renderHero, data.hero);
+    safeRender('about', renderAbout, data.about);
+    safeRender('experience', renderExperience, data.experience);
+    safeRender('skills', renderSkills, data.skills);
+    safeRender('projects', renderProjects, data.projects);
+    safeRender('education', renderEducation, data.education);
+    safeRender('contact', renderContact, data.contact);
+    safeRender('footer', renderFooter, data.footer);
+
+    // Initialize interactions (always, regardless of data failures)
+    initScrollAnimations();
+    initProgressBar();
+    initBackToTop();
+    initNavbarHide();
+    initThemeToggle();
+    initHeroAnimations();
   }
 
   // Loading screen
   window.addEventListener('load', () => {
     const loader = document.querySelector('.loader-overlay');
     if (loader) {
-      setTimeout(() => loader.classList.add('hidden'), 1200);
+      setTimeout(() => loader.classList.add('hidden'), 300);
     }
   });
 

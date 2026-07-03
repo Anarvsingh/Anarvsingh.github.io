@@ -9,12 +9,12 @@
       "text": "Experienced software engineer | backend engineer with {yearsExp} of hands-on experience across {industries}.",
       "highlights": [
         {
-          "text": "2+ years",
+          "text": "5+ years",
           "color": "yellow",
           "key": "yearsExp"
         },
         {
-          "text": "healthcare, retail, security",
+          "text": "healthcare, retail",
           "color": "pink",
           "key": "industries"
         }

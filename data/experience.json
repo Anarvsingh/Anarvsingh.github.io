@@ -29,7 +29,8 @@
         "JWT",
         "CloudWatch",
         "Splunk"
-      ]
+      ],
+      "logo": "assets/img/logos/walmart.svg"
     },
     {
       "title": "Software Engineer - Backend Development",
@@ -58,7 +59,8 @@
         "Kubernetes",
         "Git",
         "Linux"
-      ]
+      ],
+      "logo": "assets/img/logos/cybage.webp"
     }
   ]
 }

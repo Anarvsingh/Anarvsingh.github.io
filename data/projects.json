@@ -2,191 +2,91 @@
   "heading": "Projects",
   "projects": [
     {
-      "name": "Disney-Clone",
-      "description": "GitHub repository: Disney-Clone",
-      "technologies": [
-        "JavaScript",
-        "HTML",
-        "CSS"
-      ],
-      "liveUrl": "https://github.com/Anarvsingh/Disney-Clone",
-      "githubUrl": "https://github.com/Anarvsingh/Disney-Clone"
-    },
-    {
-      "name": "time-series-forecasting-python",
-      "description": "Interactive application built for continuous learning",
-      "technologies": [
-        "Jupyter Notebook",
-        "Python",
-        "HTML"
-      ],
-      "liveUrl": "https://github.com/Anarvsingh/time-series-forecasting-python",
-      "githubUrl": "https://github.com/Anarvsingh/time-series-forecasting-python"
-    },
-    {
-      "name": "sentiment-analysis-webapp-sagemaker",
-      "description": "Learning project built with modern web technologies",
-      "technologies": [
-        "Jupyter Notebook",
-        "Python",
-        "HTML"
-      ],
-      "liveUrl": "https://github.com/Anarvsingh/sentiment-analysis-webapp-sagemaker",
-      "githubUrl": "https://github.com/Anarvsingh/sentiment-analysis-webapp-sagemaker"
-    },
-    {
-      "name": "generating-synthetic-data-using-gans",
-      "description": "Learning project built with modern web technologies",
-      "technologies": [
-        "Jupyter Notebook"
-      ],
-      "liveUrl": "https://github.com/Anarvsingh/generating-synthetic-data-using-gans",
-      "githubUrl": "https://github.com/Anarvsingh/generating-synthetic-data-using-gans"
-    },
-    {
-      "name": "computer-vision-projects",
-      "description": "Modern web application demonstrating clean code principles",
-      "technologies": [
-        "Jupyter Notebook",
-        "Python"
-      ],
-      "liveUrl": "https://github.com/Anarvsingh/computer-vision-projects",
-      "githubUrl": "https://github.com/Anarvsingh/computer-vision-projects"
-    },
-    {
-      "name": "create-million-parameter-llm-from-scratch",
-      "description": "Personal project for exploring modern development practices",
-      "technologies": [
-        "Jupyter Notebook"
-      ],
-      "liveUrl": "https://github.com/Anarvsingh/create-million-parameter-llm-from-scratch",
-      "githubUrl": "https://github.com/Anarvsingh/create-million-parameter-llm-from-scratch"
-    },
-    {
-      "name": "multi-agentic-rag",
-      "description": "Personal development project using industry best practices",
-      "technologies": [
-        "Python"
-      ],
-      "liveUrl": "https://github.com/Anarvsingh/multi-agentic-rag",
-      "githubUrl": "https://github.com/Anarvsingh/multi-agentic-rag"
-    },
-    {
-      "name": "mlops-app",
-      "description": "Portfolio project showcasing development capabilities",
-      "technologies": [
-        "HCL",
-        "Python",
-        "Jupyter Notebook",
-        "Dockerfile",
-        "Shell"
-      ],
-      "liveUrl": "https://github.com/Anarvsingh/mlops-app",
-      "githubUrl": "https://github.com/Anarvsingh/mlops-app"
-    },
-    {
-      "name": "ai_soc",
-      "description": "Personal development project using industry best practices",
-      "technologies": [],
-      "liveUrl": "https://github.com/Anarvsingh/ai_soc",
-      "githubUrl": "https://github.com/Anarvsingh/ai_soc"
-    },
-    {
-      "name": "predictive-uncertainty-estimation-using-deep-ensemble",
-      "description": "Modern web application demonstrating clean code principles",
-      "technologies": [],
-      "liveUrl": "https://github.com/Anarvsingh/predictive-uncertainty-estimation-using-deep-ensemble",
-      "githubUrl": "https://github.com/Anarvsingh/predictive-uncertainty-estimation-using-deep-ensemble"
-    },
-    {
-      "name": "model-interpretability-for-machine-learning-models",
-      "description": "Practice application demonstrating full-stack development skills",
-      "technologies": [],
-      "liveUrl": "https://github.com/Anarvsingh/model-interpretability-for-machine-learning-models",
-      "githubUrl": "https://github.com/Anarvsingh/model-interpretability-for-machine-learning-models"
-    },
-    {
-      "name": "contribution-history",
-      "description": "Generated GitHub contribution history",
-      "technologies": [],
-      "liveUrl": "https://github.com/Anarvsingh/contribution-history",
-      "githubUrl": "https://github.com/Anarvsingh/contribution-history"
-    },
-    {
       "name": "SkillCheck2",
-      "description": "GitHub repository: SkillCheck2",
+      "description": "Technical-interview platform built with Next.js and TypeScript: interviewers schedule sessions and run live video interview rooms with a built-in code editor, backed by Clerk authentication, Stream video, and a Convex real-time database.",
       "technologies": [
+        "Next.js",
         "TypeScript",
-        "JavaScript",
-        "CSS"
+        "Clerk",
+        "Stream",
+        "Convex"
       ],
       "liveUrl": "https://hirefy-u5c8.vercel.app",
       "githubUrl": "https://github.com/Anarvsingh/SkillCheck2"
     },
     {
       "name": "Talkify",
-      "description": "GitHub repository: Talkify",
+      "description": "Full-stack real-time chat application with Socket.io messaging, online-presence tracking, and JWT authentication. Node.js/Express and MongoDB on the backend; React, Zustand, and TailwindCSS on the frontend, with Cloudinary for image uploads.",
       "technologies": [
-        "JavaScript",
-        "HTML",
-        "CSS"
+        "Node.js",
+        "Express",
+        "Socket.io",
+        "MongoDB",
+        "React",
+        "JWT"
       ],
       "liveUrl": "https://talkify-c59g.onrender.com",
       "githubUrl": "https://github.com/Anarvsingh/Talkify"
     },
     {
-      "name": "Parking-Lot-LLD-",
-      "description": "GitHub repository: Parking-Lot-LLD-",
-      "technologies": [
-        "Java"
-      ],
-      "liveUrl": "https://github.com/Anarvsingh/Parking-Lot-LLD-",
-      "githubUrl": "https://github.com/Anarvsingh/Parking-Lot-LLD-"
-    },
-    {
       "name": "AdvanceRestApi",
-      "description": "GitHub repository: AdvanceRestApi",
+      "description": "Spring Boot REST API with a clean layered architecture: controller, service, and Spring Data JPA repository tiers, request/response DTOs mapped via ModelMapper, and a Maven build.",
       "technologies": [
-        "Java"
+        "Java",
+        "Spring Boot",
+        "Spring Data JPA",
+        "Maven"
       ],
-      "liveUrl": "https://github.com/Anarvsingh/AdvanceRestApi",
+      "liveUrl": "",
       "githubUrl": "https://github.com/Anarvsingh/AdvanceRestApi"
     },
     {
-      "name": "BasicRest",
-      "description": "GitHub repository: BasicRest",
+      "name": "Parking-Lot-LLD-",
+      "description": "Low-level design of a multi-floor parking lot in Java: multiple vehicle and spot types, bus parking across five consecutive large spots, ticket-based park/unpark flows, and SOLID-driven class design using Strategy and Template Method patterns.",
       "technologies": [
-        "Java"
+        "Java",
+        "OOP",
+        "Design Patterns"
       ],
-      "liveUrl": "https://github.com/Anarvsingh/BasicRest",
-      "githubUrl": "https://github.com/Anarvsingh/BasicRest"
+      "liveUrl": "",
+      "githubUrl": "https://github.com/Anarvsingh/Parking-Lot-LLD-"
     },
     {
-      "name": "order",
-      "description": "GitHub repository: order",
+      "name": "mlops-app",
+      "description": "End-to-end MLOps pipeline on Google Cloud: Terraform-provisioned infrastructure, Prefect orchestration, dbt transformations in BigQuery, MLflow experiment tracking, and a Dockerized FastAPI model-serving API deployed to Cloud Run via GitHub Actions.",
       "technologies": [
-        "Java"
+        "Python",
+        "Terraform",
+        "GCP",
+        "FastAPI",
+        "Docker",
+        "MLflow"
       ],
-      "liveUrl": "https://github.com/Anarvsingh/order",
-      "githubUrl": "https://github.com/Anarvsingh/order"
+      "liveUrl": "",
+      "githubUrl": "https://github.com/Anarvsingh/mlops-app"
     },
     {
-      "name": "Resume",
-      "description": "GitHub repository: Resume",
+      "name": "multi-agentic-rag",
+      "description": "Multi-agent Retrieval-Augmented Generation system built with LangChain, Groq LLMs, and Streamlit: routes queries across retrieval, query-reformulation, and web-search agents with self-correction, fact-checking, and safety-check stages.",
       "technologies": [
-        "TeX"
+        "Python",
+        "LangChain",
+        "Streamlit",
+        "Groq"
       ],
-      "liveUrl": "https://github.com/Anarvsingh/Resume",
-      "githubUrl": "https://github.com/Anarvsingh/Resume"
+      "liveUrl": "",
+      "githubUrl": "https://github.com/Anarvsingh/multi-agentic-rag"
     },
     {
-      "name": "QuizApp",
-      "description": "GitHub repository: QuizApp",
+      "name": "create-million-parameter-llm-from-scratch",
+      "description": "A 2.3-million-parameter LLaMA-style language model implemented from scratch in PyTorch, covering RMSNorm pre-normalization, rotary positional embeddings, and SwiGLU activations, trainable without high-end GPU hardware.",
       "technologies": [
-        "Java"
+        "Python",
+        "PyTorch",
+        "Jupyter Notebook"
       ],
-      "liveUrl": "https://github.com/Anarvsingh/QuizApp",
-      "githubUrl": "https://github.com/Anarvsingh/QuizApp"
+      "liveUrl": "",
+      "githubUrl": "https://github.com/Anarvsingh/create-million-parameter-llm-from-scratch"
     }
   ]
 }

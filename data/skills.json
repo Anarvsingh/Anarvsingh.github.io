@@ -20,10 +20,6 @@
         {
           "name": "JavaScript",
           "icon": "fab fa-js"
-        },
-        {
-          "name": "TypeScript",
-          "icon": "fab fa-js"
         }
       ]
     },
@@ -33,19 +29,15 @@
       "items": [
         {
           "name": "Spring Boot",
-          "icon": "fas fa-chart-line"
+          "icon": "fas fa-leaf"
         },
         {
-          "name": "Spring MVC",
-          "icon": "fas fa-chart-line"
+          "name": "Spring Security",
+          "icon": "fas fa-shield-halved"
         },
         {
           "name": "Hibernate",
-          "icon": "fas fa-chart-line"
-        },
-        {
-          "name": "JPA",
-          "icon": "fas fa-circle"
+          "icon": "fas fa-layer-group"
         },
         {
           "name": "Node.js",
@@ -54,10 +46,6 @@
         {
           "name": "Express.js",
           "icon": "fas fa-server"
-        },
-        {
-          "name": "Spring Security",
-          "icon": "fas fa-chart-line"
         }
       ]
     },
@@ -67,31 +55,15 @@
       "items": [
         {
           "name": "AWS EC2",
-          "icon": "fas fa-microchip"
+          "icon": "fab fa-aws"
         },
         {
-          "name": "ECS",
-          "icon": "fas fa-microchip"
-        },
-        {
-          "name": "Lambda",
-          "icon": "fas fa-circle"
+          "name": "AWS Lambda",
+          "icon": "fab fa-aws"
         },
         {
           "name": "S3",
-          "icon": "fab fa-css3"
-        },
-        {
-          "name": "IAM",
-          "icon": "fas fa-circle"
-        },
-        {
-          "name": "CloudWatch",
-          "icon": "fas fa-microchip"
-        },
-        {
-          "name": "VPC",
-          "icon": "fas fa-microchip"
+          "icon": "fas fa-hdd"
         },
         {
           "name": "Docker",
@@ -103,27 +75,15 @@
         },
         {
           "name": "Terraform",
-          "icon": "fas fa-code-branch"
+          "icon": "fas fa-cubes"
         },
         {
           "name": "Apache Kafka",
           "icon": "fas fa-stream"
         },
         {
-          "name": "RabbitMQ",
-          "icon": "fas fa-chart-line"
-        },
-        {
           "name": "PostgreSQL",
           "icon": "fas fa-database"
-        },
-        {
-          "name": "MySQL",
-          "icon": "fas fa-database"
-        },
-        {
-          "name": "MongoDB",
-          "icon": "fas fa-leaf"
         },
         {
           "name": "Redis",
@@ -131,63 +91,11 @@
         },
         {
           "name": "Jenkins",
-          "icon": "fas fa-sync-alt"
-        },
-        {
-          "name": "GitHub Actions",
-          "icon": "fas fa-microchip"
+          "icon": "fas fa-gears"
         },
         {
           "name": "Git",
           "icon": "fab fa-git-alt"
-        },
-        {
-          "name": "Maven",
-          "icon": "fas fa-circle"
-        },
-        {
-          "name": "Gradle",
-          "icon": "fas fa-chart-line"
-        },
-        {
-          "name": "Linux",
-          "icon": "fab fa-linux"
-        },
-        {
-          "name": "Shell Scripting",
-          "icon": "fas fa-chart-line"
-        },
-        {
-          "name": "JUnit",
-          "icon": "fas fa-circle"
-        },
-        {
-          "name": "Mockito",
-          "icon": "fas fa-microchip"
-        },
-        {
-          "name": "Postman",
-          "icon": "fas fa-circle"
-        },
-        {
-          "name": "Swagger",
-          "icon": "fas fa-chart-line"
-        },
-        {
-          "name": "Splunk",
-          "icon": "fas fa-circle"
-        },
-        {
-          "name": "OAuth2",
-          "icon": "fas fa-circle"
-        },
-        {
-          "name": "JWT Authentication",
-          "icon": "fas fa-microchip"
-        },
-        {
-          "name": "Role-Based Access Control",
-          "icon": "fas fa-chart-line"
         }
       ]
     },
@@ -196,76 +104,24 @@
       "icon": "fas fa-cogs",
       "items": [
         {
-          "name": "Backend Development",
-          "icon": "fas fa-microchip"
-        },
-        {
           "name": "Microservices",
-          "icon": "fas fa-chart-line"
-        },
-        {
-          "name": "Multithreading",
-          "icon": "fas fa-chart-line"
+          "icon": "fas fa-network-wired"
         },
         {
           "name": "Distributed Systems",
-          "icon": "fas fa-chart-line"
-        },
-        {
-          "name": "Asynchronous Processing",
-          "icon": "fas fa-chart-line"
-        },
-        {
-          "name": "Database Optimization",
-          "icon": "fas fa-circle"
-        },
-        {
-          "name": "Query Performance Tuning",
-          "icon": "fas fa-chart-line"
+          "icon": "fas fa-diagram-project"
         },
         {
           "name": "CI/CD Pipelines",
-          "icon": "fas fa-microchip"
-        },
-        {
-          "name": "API Testing",
-          "icon": "fas fa-circle"
-        },
-        {
-          "name": "Integration Testing",
-          "icon": "fas fa-chart-line"
-        },
-        {
-          "name": "Logging",
-          "icon": "fas fa-circle"
-        },
-        {
-          "name": "Production Monitoring",
-          "icon": "fas fa-chart-line"
-        },
-        {
-          "name": "Agile",
-          "icon": "fas fa-sync-alt"
-        },
-        {
-          "name": "Scrum",
-          "icon": "fas fa-users"
-        },
-        {
-          "name": "SDLC",
-          "icon": "fas fa-microchip"
+          "icon": "fas fa-arrows-rotate"
         },
         {
           "name": "System Design",
-          "icon": "fas fa-circle"
-        },
-        {
-          "name": "Production Support",
-          "icon": "fas fa-chart-line"
+          "icon": "fas fa-sitemap"
         },
         {
           "name": "Performance Optimization",
-          "icon": "fas fa-chart-line"
+          "icon": "fas fa-gauge-high"
         }
       ]
     }
